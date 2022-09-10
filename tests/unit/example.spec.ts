@@ -1,10 +1,10 @@
 import { shallowMount } from "@vue/test-utils";
-import HelloWorld from "@/components/HelloWorld.vue";
+import Day from "@/components/Day.vue";
 
-describe("HelloWorld.vue", () => {
-  it("renders props.msg when passed", () => {
-    const msg = "new message";
-    const wrapper = shallowMount(HelloWorld, {
+describe("Day.vue", () => {
+  it("Render proper day of the week according to passed props", () => {
+    const msg = "Monday";
+    const wrapper = shallowMount(Day, {
       propsData: { msg },
     });
     expect(wrapper.text()).toMatch(msg);
