@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/">Time Report</router-link> |
+      <router-link to="/">Week</router-link> |
       <router-link to="/tasks">Tasks</router-link>
     </nav>
     <router-view />
