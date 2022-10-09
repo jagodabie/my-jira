@@ -1,30 +1,42 @@
 <template>
   <div class="timeraport-container">
-    <!-- <div class="tasks-section">
-      <TaskElement :task="task" id="12" />
-    </div> -->
-    <div
-      class="day-of-week"
-      v-for="(dayofWeek, index) in daysOfWeek"
-      :key="index"
-    >
-      <div class="day-of-week__title">
-        {{ dayofWeek }}
-      </div>
-
-      <div class="day-of-week__content">
-        <template v-if="dayofWeek === 'Time'">
-          <Hours :hours="hours" />
-        </template>
-        <template v-else>
-          <div class="day-of-week__hour">
-            <div
-              v-for="(el, index) in 3"
-              :key="index"
-              class="day-of-week__timeline"
-            ></div>
+    <div class="days">
+      <div
+        v-for="(dayofWeek, index) in daysOfWeek"
+        :key="index"
+        class="day-column"
+        :class="{ lastColumn: index === 7 }"
+      >
+        <div class="day-header">{{ dayofWeek }}</div>
+        <div class="day-content">
+          <div v-if="dayofWeek === 'Time'" class="day-content-hour">
+            <div v-for="(hour, index) in hours" :key="index" class="day-hour">
+              <div
+                v-for="(el, index) in 4"
+                :key="index"
+                class="day-timeline"
+                :class="{ lastElement: index === 3 }"
+              >
+                <span> {{ `${hour}: ${handleMinutes(index)}` }} </span>
+              </div>
+            </div>
           </div>
-        </template>
+          <div
+            v-else
+            class="day-content-hour"
+            v-for="(hour, index) in hours"
+            :key="index"
+          >
+            <div
+              v-for="(el, index) in 4"
+              :key="index"
+              class="day-timeline"
+              :class="{ lastElement: index === 3 }"
+            >
+              <span>Jagoda</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -43,6 +55,10 @@ import { Component, Vue } from "vue-property-decorator";
   },
 })
 export default class WeekView extends Vue {
+  handleMinutes(index: number): string {
+    if (index === 3) return "00";
+    return String((index + 1) * 15);
+  }
   daysOfWeek: string[] = [
     "Time",
     "Monday",
@@ -65,53 +81,44 @@ export default class WeekView extends Vue {
   hours: number[] = [
     5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
   ];
+  isTimeColumn = true;
 }
 </script>
-<style scoped>
-.week {
+<style lang="scss">
+@import "@/components/scss/_variables.scss";
+.days {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.tasks-section {
-  font-size: 1.5rem;
-  font-weight: 800;
-}
-.timeraport-container {
-  display: flex;
+  direction: column;
   justify-content: center;
 }
-.day-of-week {
-  width: 15rem;
-}
-.day-of-week__title {
-  padding: 2rem;
-  font-size: 1.5rem;
+
+.day-header {
+  padding: 20px 50px;
+  font-size: 20px;
   font-weight: 800;
-  border-top: 0.1px solid rgb(175, 168, 168);
-  border-left: 0.1px solid rgb(175, 168, 168);
-  border-bottom: 0.1px solid rgb(175, 168, 168);
+  box-sizing: border-box;
+  border-top: $border-gray44;
+  border-left: $border-gray44;
 }
-.day-of-week:last-child {
-  border-right: 0.1px solid rgb(175, 168, 168);
+
+.day-content {
+  height: auto;
+  border-top: $border-gray44;
+  border-left: $border-gray44;
 }
-.day-of-week:first-child {
-  width: 8rem;
+.day-timeline,
+.day-hour-quarter {
+  border-bottom: $border-gray;
+  padding: 2px;
+  box-sizing: content-box;
+  span {
+    font-size: 12px;
+  }
 }
-.day-of-week__content {
-  border-left: 0.1px solid rgb(175, 168, 168);
-  border-bottom: 0.1px solid rgb(175, 168, 168);
-  width: 100%;
-  height: 100vh;
+.lastElement {
+  border-bottom: $border-gray44;
 }
-.day-of-week__timeline {
-  border-bottom: 0.01px solid rgb(219, 215, 215);
-  height: 33%;
-}
-.day-of-week__timeline:last-child {
-  border-bottom: 0.01px solid rgb(175, 168, 168);
-}
-.day-of-week__hour {
-  height: 60px;
+.lastColumn {
+  border-right: $border-gray44;
 }
 </style>
