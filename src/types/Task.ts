@@ -1,9 +1,7 @@
 export interface Task {
-  id: string;
-  name: string;
-  prority: string;
-  time: string;
-  startDate: Date;
-  endDate: Date;
+  id: number;
+  title: string;
+  comment: string;
+  prior: string;
   category: string;
 }

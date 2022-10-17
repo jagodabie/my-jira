@@ -2,7 +2,8 @@
   <div id="app">
     <nav>
       <router-link to="/">Week</router-link> |
-      <router-link to="/tasks">Tasks</router-link>
+      <router-link to="/tasks">Tasks</router-link> |
+      <router-link to="/basic-tasks">Task's List - Basic</router-link>
     </nav>
     <router-view />
   </div>

@@ -29,15 +29,6 @@ export default class WeekView extends Vue {
     "Saturday",
     "Sunday",
   ];
-  task: Task = {
-    id: "1",
-    name: "Bike",
-    prority: "high",
-    time: "4",
-    startDate: new Date(),
-    endDate: new Date(),
-    category: "sport",
-  };
   hours: number[] = [
     5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
   ];

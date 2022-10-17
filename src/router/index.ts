@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import WeekView from "../views/WeekView.vue";
 import TasksView from "../views/TasksView.vue";
-
+import BasicTaskView from "../views/BasicTaskView.vue";
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -16,8 +16,13 @@ const routes: Array<RouteConfig> = [
     name: "tasks",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    // which is lazy-laded when the route is visited.
     component: TasksView,
+  },
+  {
+    path: "/basic-tasks",
+    name: "basic-tasks",
+    component: BasicTaskView,
   },
 ];
 
