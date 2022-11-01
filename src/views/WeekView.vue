@@ -5,7 +5,6 @@
 </template>
 
 <script lang="ts">
-import { Task } from "@/types/Task";
 import Days from "@/components/Day";
 import { Component, Vue } from "vue-property-decorator";
 

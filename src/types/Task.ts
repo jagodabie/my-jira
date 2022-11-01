@@ -5,3 +5,9 @@ export interface Task {
   prior: string;
   category: string;
 }
+export interface TimeRecord {
+  durationInHour: string;
+  durationInMinutes: string;
+  workDate: string;
+  workDescription: string;
+}

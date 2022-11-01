@@ -1,7 +1,7 @@
 <template>
   <li :key="item.id">
     <span>{{ item.title }}</span
-    ><span>+</span>
+    ><span @click="handleClick()">+</span>
   </li>
 </template>
 
@@ -13,6 +13,10 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 export default class InputBase extends Vue {
   @Prop({ default: {} })
   public item!: Task;
+  /// Pass props
+  handleClick() {
+    console.log("modal show");
+  }
 }
 </script>
 <style scoped lang="scss">
