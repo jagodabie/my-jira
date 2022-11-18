@@ -1,15 +1,17 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import WeekView from "../views/WeekView.vue";
-import TasksView from "../views/TasksView.vue";
-import BasicTaskView from "../views/BasicTaskView.vue";
+import CalendarView from "@/views/CalendarView.vue";
+import TasksView from "@/views/TasksView.vue";
+import BasicTaskView from "@/views/BasicTaskView.vue";
+import Playground from "@/views/Playground.vue";
+import TimeReportView from "@/views/TimeReportView.vue";
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
     path: "/",
     name: "home",
-    component: WeekView,
+    component: CalendarView,
   },
   {
     path: "/tasks",
@@ -23,6 +25,16 @@ const routes: Array<RouteConfig> = [
     path: "/basic-tasks",
     name: "basic-tasks",
     component: BasicTaskView,
+  },
+  {
+    path: "/playground",
+    name: "playground",
+    component: Playground,
+  },
+  {
+    path: "/time-report",
+    name: "TimeReport",
+    component: TimeReportView,
   },
 ];
 

@@ -10,4 +10,6 @@ export interface TimeRecord {
   durationInMinutes: string;
   workDate: string;
   workDescription: string;
+  // TODO: remove title
+  tasksTitle?: string;
 }

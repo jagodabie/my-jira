@@ -1,13 +1,16 @@
 <template>
-  <div class="task-list-container" @dblclick="onClose()">
+  <div class="task-list-container">
     <h1>Moje zadania:</h1>
     <ul class="task-list-basic">
-      <ListItem v-for="(task, index) in basicTasks" :item="task" :key="index" />
+      <ListItem
+        v-for="(task, index) in basicTasks"
+        :item="task"
+        :key="index"
+        @openModal="handleOpenModal()"
+      />
     </ul>
-
     <br />
-    <button @click="onClick()" id="myBtn">Test</button>
-    <Modal />
+    <Modal @closeModal="handleCloseModal()" />
   </div>
 </template>
 
@@ -39,29 +42,25 @@ export default class BasicTaskView extends Vue {
       return [];
     }
   }
-  onClick() {
-    var modal = document.getElementById("myModal") as HTMLInputElement;
-    var btn = document.getElementById("myBtn") as HTMLInputElement;
-    btn.onclick = function () {
-      modal.style.display = "block";
-    };
+  handleOpenModal() {
+    (document.getElementById("task-modal") as HTMLInputElement).style.display =
+      "block";
   }
-  onClose() {
-    var modal = document.getElementById("myModal") as HTMLInputElement;
-    modal.style.display = "none";
+
+  handleCloseModal() {
+    (document.getElementById("task-modal") as HTMLInputElement).style.display =
+      "none";
   }
 
   created() {
-    this.getTasks("http://localhost:3000/tasks/");
-    console.log("created");
+    this.getTasks("/tasks/");
   }
 }
 </script>
 <style scoped lang="scss">
 .task-list-container {
   width: 30%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
 }
 ul {
   list-style-type: none;

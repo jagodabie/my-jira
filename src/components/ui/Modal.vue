@@ -1,10 +1,10 @@
+<!-- TODO(@Listen - implementation) : For now  events emit logic sufficient.  -->
 <template>
-  <div id="myModal" class="modal">
-    <!-- Modal content -->
+  <div id="task-modal" class="modal">
     <div class="modal-content">
-      <span class="close">&times;</span>
+      <span class="close" @click="$emit('closeModal')">&times;</span>
       <h1>{{ modalTitle }}</h1>
-      <Form />
+      <Form @closeModal="$emit('closeModal')" />
     </div>
   </div>
 </template>
@@ -18,36 +18,39 @@ import Form from "@/components/ui/Form.vue";
     Form,
   },
 })
-export default class Moadal extends Vue {
+export default class Modal extends Vue {
   @Prop({ default: "Task's title" })
   public modalTitle!: string;
+  @Prop({ default: true })
+  public modalClosed!: boolean;
+
+  handleCloseModal() {
+    console.log("TEST");
+  }
 }
 </script>
 <style scoped lang="scss">
-/* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
+  display: none;
+  position: fixed;
+  z-index: 1;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 40%; /* Could be more or less, depending on screen size */
+  width: 40%;
 }
 
-/* The Close Button */
 .close {
   color: #aaa;
   float: right;

@@ -1,21 +1,11 @@
 <template>
   <div class="days">
-    <div
-      v-for="(dayofWeek, index) in daysOfWeek"
-      :key="index"
-      class="day-column"
-      :class="{ lastColumn: index === 7 }"
-    >
-      <div class="day-header">{{ dayofWeek }}</div>
+    <div v-for="(weekDay, index) in daysOfWeek" :key="index" class="day-column">
+      <div class="day-header">{{ weekDay }}</div>
       <div class="day-content">
-        <div v-if="dayofWeek === 'Time'" class="day-content-hour">
+        <div v-if="weekDay === 'Time'" class="day-content-hour">
           <div v-for="(hour, index) in hours" :key="index" class="day-hour">
-            <div
-              v-for="(el, index) in 4"
-              :key="index"
-              class="day-timeline"
-              :class="{ lastElement: index === 3 }"
-            >
+            <div v-for="(el, index) in 4" :key="index" class="day-timeline">
               <span> {{ `${hour}: ${handleMinutes(index)}` }} </span>
             </div>
           </div>
@@ -26,12 +16,7 @@
           v-for="(hour, index) in hours"
           :key="index"
         >
-          <div
-            v-for="(el, index) in 4"
-            :key="index"
-            class="day-timeline"
-            :class="{ lastElement: index === 3 }"
-          >
+          <div v-for="(el, index) in 4" :key="index" class="day-timeline">
             <span>Jagoda</span>
           </div>
         </div>
@@ -96,10 +81,10 @@ export default class Days extends Vue {
     font-size: 12px;
   }
 }
-.lastElement {
-  border-bottom: $border-gray44;
-}
-.lastColumn {
+.day-column:last-child {
   border-right: $border-gray44;
+}
+.day-timeline:last-child {
+  border-bottom: $border-gray44;
 }
 </style>

@@ -58,7 +58,7 @@ export default class Form extends Vue {
   checkField() {
     const pattern = /^\d+\.?\d*$/;
     if (
-      !pattern.test(this.spentTimeHours) ||
+      !pattern.test(this.spentTimeHours) &&
       !pattern.test(this.spentTimeMinutes)
     ) {
       return this.errors.push("Must be number value and can't be empty");
@@ -80,6 +80,10 @@ export default class Form extends Vue {
       })
       .catch((err) => {
         alert(err.message);
+        alert("Something went wrong");
+      })
+      .finally(() => {
+        this.$emit("closeModal");
       });
   }
 }
