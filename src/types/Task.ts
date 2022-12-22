@@ -13,3 +13,9 @@ export interface TimeRecord {
   // TODO: remove title
   tasksTitle?: string;
 }
+
+export interface Day {
+  index: number;
+  dayName: string;
+  dayDate: string;
+}

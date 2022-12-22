@@ -53,7 +53,7 @@ export default class BasicTaskView extends Vue {
   }
 
   created() {
-    this.getTasks("/tasks/");
+    this.getTasks("http://localhost:3000/tasks/");
   }
 }
 </script>
